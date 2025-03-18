@@ -13,6 +13,9 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
     /**
      * Creates new form FormKaryawan
      */
+    
+    private FormLihatKaryawan formLihatKaryawan;
+    
     public FormKaryawan() {
         initComponents();
         setItemComboBox();
@@ -59,6 +62,11 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
         ruangComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lihatButton.setText("Lihat");
+        lihatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lihatButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,6 +123,11 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
         jPanel2.setBackground(new java.awt.Color(255, 204, 204));
 
         simpanButton.setText("Simpan");
+        simpanButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                simpanButtonActionPerformed(evt);
+            }
+        });
 
         hapusButton.setText("Hapus");
         hapusButton.addActionListener(new java.awt.event.ActionListener() {
@@ -175,12 +188,45 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
 
     private void hapusButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusButtonActionPerformed
         // TODO add your handling code here:
+        setKtp("");
+        setNama("");
+        setRuang(1);
+        setPassword("");
     }//GEN-LAST:event_hapusButtonActionPerformed
 
     private void tutupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutupButtonActionPerformed
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_tutupButtonActionPerformed
+
+    private void lihatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatButtonActionPerformed
+        // TODO add your handling code here:
+        if(formLihatKaryawan != null){
+            formLihatKaryawan.setVisible(true);
+        }
+    }//GEN-LAST:event_lihatButtonActionPerformed
+
+    private void simpanButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simpanButtonActionPerformed
+        // TODO add your handling code here:
+        String ktp = getKtp();
+        String nama = getNama();
+        int ruang = getRuang();
+        
+        if(formLihatKaryawan != null){
+            Object[] newData = {ktp,nama,ruang};
+            formLihatKaryawan.addDataToTable(newData);
+        }
+        
+        setKtp("");
+        setNama("");
+        setRuang(1);
+        setPassword("");
+    }//GEN-LAST:event_simpanButtonActionPerformed
+    
+    public void setFormLihatKaryawan(FormLihatKaryawan formLihatKaryawan){
+        this.formLihatKaryawan = formLihatKaryawan; // Set FormLihatKaryawan reference
+    }
+    
     
     private void setItemComboBox(){
         char[] ch = new char[1];
