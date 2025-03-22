@@ -2,7 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
-package formkaryawan;
+package view;
+
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -18,9 +21,13 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
     
     public FormKaryawan() {
         initComponents();
-        setItemComboBox();
+        setItemComboBox();    
     }
-
+    
+    public void setFormLihatKaryawan(FormLihatKaryawan formLihatKaryawan){
+        this.formLihatKaryawan = formLihatKaryawan;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -200,8 +207,14 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tutupButtonActionPerformed
 
     private void lihatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lihatButtonActionPerformed
-        // TODO add your handling code here:
-        if(formLihatKaryawan != null){
+        // If FormLihatKaryawan is already created and shown, just make it visible
+        if (formLihatKaryawan != null && !formLihatKaryawan.isVisible()) {
+            formLihatKaryawan.setVisible(true);
+        }
+        else {
+            // Get the parent JFrame from the JInternalFrame (FormKaryawan)
+            JFrame parentFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+            formLihatKaryawan = new FormLihatKaryawan(parentFrame, true);
             formLihatKaryawan.setVisible(true);
         }
     }//GEN-LAST:event_lihatButtonActionPerformed
@@ -215,6 +228,8 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
         if(formLihatKaryawan != null){
             Object[] newData = {ktp,nama,ruang};
             formLihatKaryawan.addDataToTable(newData);
+        }else {
+            System.out.println("FormLihatKaryawan is not initialized!");
         }
         
         setKtp("");
@@ -222,12 +237,7 @@ public class FormKaryawan extends javax.swing.JInternalFrame {
         setRuang(1);
         setPassword("");
     }//GEN-LAST:event_simpanButtonActionPerformed
-    
-    public void setFormLihatKaryawan(FormLihatKaryawan formLihatKaryawan){
-        this.formLihatKaryawan = formLihatKaryawan; // Set FormLihatKaryawan reference
-    }
-    
-    
+   
     private void setItemComboBox(){
         char[] ch = new char[1];
         int i;
