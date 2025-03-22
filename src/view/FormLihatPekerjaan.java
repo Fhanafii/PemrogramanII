@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
-package formkaryawan;
+package view;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -11,19 +11,19 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author fhana
  */
-public class FormLihatKaryawan extends javax.swing.JDialog {
+public class FormLihatPekerjaan extends javax.swing.JDialog {
 
     /**
-     * Creates new form FormLihatKaryawan
+     * Creates new form FormLihatPekerjaan
      */
-    private final DefaultTableModel karyawanTableModel;
-    private String ktpDipilih;
     
-    public FormLihatKaryawan(java.awt.Frame parent, boolean modal) {
+    private final DefaultTableModel pekerjaanTableModel;
+    private String kodePekerjaanDipilih;
+    public FormLihatPekerjaan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         
-        karyawanTableModel = (DefaultTableModel) karyawanTable.getModel();
+        pekerjaanTableModel = (DefaultTableModel) pekerjaanTable.getModel();
     }
 
     /**
@@ -37,58 +37,58 @@ public class FormLihatKaryawan extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        karyawanTable = new javax.swing.JTable();
+        pekerjaanTable = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         pilihButton = new javax.swing.JButton();
         tutupButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Data Karyawan");
+        setTitle("Data Pekerjaan");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(102, 255, 102));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Karyawan"));
-        jPanel1.setToolTipText("");
+        jPanel1.setBackground(new java.awt.Color(153, 255, 153));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Data Pekerjaan", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setPreferredSize(new java.awt.Dimension(292, 207));
 
-        karyawanTable.setModel(new javax.swing.table.DefaultTableModel(
+        pekerjaanTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "KTP", "Karyawan"
+                "Kode", "Nama Pekerjaan"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(karyawanTable);
+        jScrollPane1.setViewportView(pekerjaanTable);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 526, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 153));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 204));
 
         pilihButton.setText("Pilih");
         pilihButton.addActionListener(new java.awt.event.ActionListener() {
@@ -109,50 +109,40 @@ public class FormLihatKaryawan extends javax.swing.JDialog {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(pilihButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92)
+                .addComponent(pilihButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tutupButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(66, 66, 66))
+                .addComponent(tutupButton)
+                .addGap(126, 126, 126))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(28, 28, 28)
+                .addGap(39, 39, 39)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pilihButton)
                     .addComponent(tutupButton))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        setBounds(0, 0, 421, 438);
+        setSize(new java.awt.Dimension(567, 339));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void pilihButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihButtonActionPerformed
-        // TODO add your handling code here:
-        if(karyawanTable.getSelectedRowCount() > 0){
-            ktpDipilih = karyawanTable.getValueAt(
-                    karyawanTable.getSelectedRow(), 0).toString();
-            dispose();
-        }else {
-            JOptionPane.showMessageDialog(this, "belum ada yang dipilih");
-        }
-    }//GEN-LAST:event_pilihButtonActionPerformed
 
     private void tutupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutupButtonActionPerformed
         // TODO add your handling code here:
@@ -161,24 +151,34 @@ public class FormLihatKaryawan extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
+        kodePekerjaanDipilih = "";
     }//GEN-LAST:event_formWindowActivated
-       
-    public void addDataToTable(Object[] data){
-        karyawanTableModel.addRow(data);
-    }
+
+    private void pilihButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihButtonActionPerformed
+        // TODO add your handling code here:
+        if(pekerjaanTable.getSelectedRowCount() > 0){
+           kodePekerjaanDipilih = pekerjaanTable.getValueAt(
+            pekerjaanTable.getSelectedRow(), 0).toString();
+           
+           dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Belum ada yang dipilih");
+        }
+    }//GEN-LAST:event_pilihButtonActionPerformed
     
     public void tampilkanData(Object[][] list){
-        karyawanTableModel.setRowCount(0);
-        if((list != null ) && (list.length > 0)){
+        pekerjaanTableModel.setRowCount(0);
+        if((list != null) && (list.length > 0)){
             for(int i=0; i<list.length; i++){
-                karyawanTableModel.addRow(list[i]);
+                pekerjaanTableModel.addRow(list[i]);
             }
         }
     }
     
-    public String getKtpDipilih(){
-        return ktpDipilih;
+    public String getKodePekerjaanDipilih(){
+        return kodePekerjaanDipilih;
     }
+    
     /**
      * @param args the command line arguments
      */
@@ -196,20 +196,20 @@ public class FormLihatKaryawan extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormLihatKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLihatPekerjaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormLihatKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLihatPekerjaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormLihatKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLihatPekerjaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormLihatKaryawan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormLihatPekerjaan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                FormLihatKaryawan dialog = new FormLihatKaryawan(new javax.swing.JFrame(), true);
+                FormLihatPekerjaan dialog = new FormLihatPekerjaan(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -225,10 +225,8 @@ public class FormLihatKaryawan extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable karyawanTable;
+    private javax.swing.JTable pekerjaanTable;
     private javax.swing.JButton pilihButton;
     private javax.swing.JButton tutupButton;
     // End of variables declaration//GEN-END:variables
-
- 
 }
