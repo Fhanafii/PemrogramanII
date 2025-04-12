@@ -104,6 +104,11 @@ public class FormGaji extends javax.swing.JInternalFrame {
         });
 
         tutupButton.setText("tutup");
+        tutupButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tutupButtonActionPerformed(evt);
+            }
+        });
 
         gajiPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gaji", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
 
@@ -366,6 +371,11 @@ public class FormGaji extends javax.swing.JInternalFrame {
             gajiTable.getSelectedRow());
         }
     }//GEN-LAST:event_hapusMenuItemActionPerformed
+
+    private void tutupButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tutupButtonActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_tutupButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
